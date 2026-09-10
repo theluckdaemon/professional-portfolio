@@ -38,11 +38,9 @@ else
     exit 1
 fi
 
-# ---------------------------------------------------------
-# Step 2: Update Debs & Snaps
-# ---------------------------------------------------------
+# Update Step 2 in systemupgrade.sh
 log_info "[2/5] Upgrading installed DEB packages..."
-if ! apt-get upgrade -y; then
+if ! apt-get upgrade --with-new-pkgs -y; then
     log_error "DEB package upgrades encountered errors."
     FAILED_STEPS+=("DEB Package Upgrades")
 else
